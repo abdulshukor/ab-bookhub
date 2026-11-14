@@ -5,11 +5,7 @@ description = "Backend API for book-store"
 readme = "README.md"
 authors = [{ name = "Abdul Shukor", email = "Abdul@gmail.com" }]
 requires-python = ">=3.13"
-dependencies = [
-    "fastapi>=0.162.3",
-    "httpx>=0.28.1",
-    "uvicorn>=0.54.0",
-]
+dependencies = ["fastapi>=0.162.3", "uvicorn>=0.54.0"]
 
 [project.scripts]
 book-store-backend-api = "backend.main:main"
@@ -21,3 +17,6 @@ build-backend = "uv_build"
 
 [tool.uv.build-backend]
 module-name = "backend"
+
+[dependency-groups]
+dev = ["httpx>=0.28.1"]

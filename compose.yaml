@@ -1,0 +1,26 @@
+services:
+  backend:
+    build:
+      context: ./src/backend
+      dockerfile: Dockerfile.multistage-alpine-nonroot-nodev
+    ports:
+      - "21002:21002"
+
+    # Keep book data outside the container
+    volumes:
+      - ./src/backend/data:/app/data
+    environment:
+      DATA_DIR: /app/data
+
+  frontend:
+    build:
+      context: ./src/frontend
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "21001:21001"
+
+    # Connect to the backend using its Compose service name
+    environment:
+      API_URL: http://backend:21002
+    depends_on:
+      - backend
