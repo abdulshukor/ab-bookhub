@@ -90,7 +90,7 @@ trivy image --scanners vuln,secret --severity HIGH,CRITICAL backend:06
 
 ## Frontend image
 
-The Flask frontend has one Dockerfile: [`src/frontend/Dockerfile.frontend`](src/frontend/Dockerfile.frontend). It uses a multi-stage Alpine build, installs dependencies without the development group, and runs as `app-user` on port `21001`.
+The Flask frontend has one Dockerfile: [`src/frontend/Dockerfile.frontend`](src/frontend/Dockerfile.frontend). It uses a multi-stage Alpine Docker build to reduce image size. It installs only the dependencies needed to run the application and runs as a non-root user (app-user) on port 21001.
 
 ```bash
 docker build -f src/frontend/Dockerfile.frontend -t bookstore-frontend:01 src/frontend
