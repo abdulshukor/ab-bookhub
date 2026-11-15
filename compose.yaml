@@ -8,9 +8,9 @@ services:
 
     # Keep book data outside the container
     volumes:
-      - ./src/backend/data:/app/data
+      - ./src/backend/data:/book-store/data
     environment:
-      DATA_DIR: /app/data
+      DATA_DIR: /book-store/data
 
   frontend:
     build:
