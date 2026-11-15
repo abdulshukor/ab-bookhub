@@ -1,8 +1,8 @@
 # Leaf & Lore — Docker Image Optimization
 
-A Python bookstore application used to explore how Docker base images, multi-stage builds, dependency management, and runtime permissions affect container images.
+A Python bookstore application used to explore how Docker base images, multi-stage builds, dependency management affect container image size.
 
-The main focus is the **backend image optimization process**: seven Dockerfiles, each introducing a specific change. A Flask frontend and Docker Compose configuration are included to run the complete application.
+The main focus is the **backend image optimization process**: six Dockerfiles, each introducing a specific change. A Flask frontend and Docker Compose configuration are included to run the complete application.
 
 ## Application overview
 
@@ -23,7 +23,7 @@ flowchart LR
 ## Tech stack
 
 | Component | Technology |
-|---|---|
+| --- | --- |
 | Backend API | Python 3.13, FastAPI |
 | Frontend | Python 3.13, Flask |
 | Data storage | CSV files |
@@ -31,14 +31,20 @@ flowchart LR
 | Containerization | Docker, Docker Compose |
 | Image scanning | Trivy |
 
-**Requirements:** Docker with the Compose plugin is needed to run the application. Git is useful for cloning the repository; Trivy is optional for security scans. You don't need a local Python installation to run the containers.
+**Prerequisites:**
+
+- Git
+- Python 3.13
+- uv
+- Docker & Docker Compose
+- Trivy
 
 ## Backend image optimization
 
-The backend Dockerfiles are in [`src/backend/`](src/backend/). The goal is to compare changes individually rather than combine every optimization into the first build.
+The backend Dockerfiles are in [`src/backend/`](src/backend/). The goal is to demonstrate how Docker image size can be gradually reduced through a series of optimization techniques.
 
 | Image | Dockerfile | Change introduced |
-|---|---|---|
+| --- | --- | --- |
 | `backend:00` | [`Dockerfile.full`](src/backend/Dockerfile.full) | Full Python image as the baseline |
 | `backend:01` | [`Dockerfile.slim`](src/backend/Dockerfile.slim) | Switch to the smaller Debian-based Slim image |
 | `backend:02` | [`Dockerfile.alpine`](src/backend/Dockerfile.alpine) | Compare Alpine against the Debian-based images |
@@ -68,33 +74,19 @@ docker image ls backend
 docker history backend:06
 ```
 
-Verify the runtime user in the last two images:
+Verify the runtime user in the image:
 
 ```bash
 docker run --rm --entrypoint id backend:05
-docker run --rm --entrypoint id backend:06
 ```
 
-Both should report UID 1000 rather than root.
+Should report UID 1000 rather than root.
 
-## Comparing the results
-
-I evaluate each build using four criteria:
-
-| Metric | Why it matters | How to check |
-|---|---|---|
-| Image size | Registry storage and image transfer cost | `docker image ls backend` |
-| Build time | Impact on local development and CI builds | `time docker build ...` |
-| Vulnerabilities | Known issues in OS and installed packages | Trivy |
-| Runtime behavior | Whether the optimized image still runs correctly | Start the API and test `/health` |
-
-Scan any image with [Trivy](https://trivy.dev/):
+Scan images with [Trivy](https://trivy.dev/):
 
 ```bash
 trivy image --scanners vuln,secret --severity HIGH,CRITICAL backend:06
 ```
-
-For a useful comparison, build each image on the same machine and architecture, record the same measurements, and scan with consistent Trivy settings. Actual benchmark numbers are intentionally not included until measured.
 
 ## Frontend image
 
@@ -104,11 +96,11 @@ The Flask frontend has one Dockerfile: [`src/frontend/Dockerfile.frontend`](src/
 docker build -f src/frontend/Dockerfile.frontend -t bookstore-frontend:01 src/frontend
 ```
 
-Its entry point is `book-store-frontend`. In the combined setup, it reaches FastAPI through `API_URL=http://backend:21002`.
+Reaches FastAPI through `API_URL=http://backend:21002`.
 
 ## Run the application with Docker Compose
 
-Once the individual images have been reviewed, [`compose.yaml`](compose.yaml) builds and starts both services together.
+[`compose.yaml`](compose.yaml) to builds and starts both services together.
 
 ```bash
 docker compose config
@@ -117,10 +109,10 @@ docker compose ps
 ```
 
 | Service | Address |
-|---|---|
-| Bookstore frontend | http://localhost:21001 |
-| Backend API | http://localhost:21002 |
-| FastAPI documentation | http://localhost:21002/docs |
+| --- | --- |
+| Bookstore frontend | <http://localhost:21001> |
+| Backend API | <http://localhost:21002> |
+| FastAPI documentation | <http://localhost:21002/docs> |
 
 View logs or stop the stack:
 
