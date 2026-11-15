@@ -1,8 +1,8 @@
 # Leaf & Lore — Docker Image Optimization
 
-A Python bookstore application used to explore how Docker base images, multi-stage builds, dependency management affect container image size.
+A Python bookstore application used to explore how Docker base images, multi-stage builds, and dependency management affect container image size.
 
-The main focus is the **backend image optimization process**: six Dockerfiles, each introducing a specific change. A Flask frontend and Docker Compose configuration are included to run the complete application.
+The main focus is the **backend image optimization process**: seven Dockerfiles, each introducing a specific change. A Flask frontend and Docker Compose configuration are included to run the complete application.
 
 ## Application overview
 
@@ -43,15 +43,15 @@ flowchart LR
 
 The backend Dockerfiles are in [`src/backend/`](src/backend/). The goal is to demonstrate how Docker image size can be gradually reduced through a series of optimization techniques.
 
-| Image | Dockerfile | Change introduced |
+| Image | Dockerfile | Change |
 | --- | --- | --- |
-| `backend:00` | [`Dockerfile.full`](src/backend/Dockerfile.full) | Full Python image as the baseline |
-| `backend:01` | [`Dockerfile.slim`](src/backend/Dockerfile.slim) | Switch to the smaller Debian-based Slim image |
-| `backend:02` | [`Dockerfile.alpine`](src/backend/Dockerfile.alpine) | Compare Alpine against the Debian-based images |
-| `backend:03` | [`Dockerfile.multistage-slim`](src/backend/Dockerfile.multistage-slim) | Separate dependency building from the Slim runtime |
-| `backend:04` | [`Dockerfile.multistage-alpine`](src/backend/Dockerfile.multistage-alpine) | Use a multi-stage build with Alpine |
-| `backend:05` | [`Dockerfile.multistage-alpine-nonroot`](src/backend/Dockerfile.multistage-alpine-nonroot) | Run the API as a non-root user |
-| `backend:06` | [`Dockerfile.multistage-alpine-nonroot-nodev`](src/backend/Dockerfile.multistage-alpine-nonroot-nodev) | Exclude development dependencies from the final build |
+| `backend:00` | [`Dockerfile.full`](src/backend/Dockerfile.full) | Full Python base image |
+| `backend:01` | [`Dockerfile.slim`](src/backend/Dockerfile.slim) | Debian-based Slim image |
+| `backend:02` | [`Dockerfile.alpine`](src/backend/Dockerfile.alpine) | Alpine Linux base image |
+| `backend:03` | [`Dockerfile.multistage-slim`](src/backend/Dockerfile.multistage-slim) | Multi-stage Slim build |
+| `backend:04` | [`Dockerfile.multistage-alpine`](src/backend/Dockerfile.multistage-alpine) | Multi-stage Alpine build |
+| `backend:05` | [`Dockerfile.multistage-alpine-nonroot`](src/backend/Dockerfile.multistage-alpine-nonroot) | Non-root execution |
+| `backend:06` | [`Dockerfile.multistage-alpine-nonroot-nodev`](src/backend/Dockerfile.multistage-alpine-nonroot-nodev) | Exclude development dependencies |
 
 ## Build the backend images
 
