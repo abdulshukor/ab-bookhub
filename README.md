@@ -11,7 +11,7 @@ Leaf & Lore has two Python services:
 - **Backend:** FastAPI service for managing books, backed by CSV storage.
 - **Frontend:** Flask web interface that communicates with the backend over HTTP.
 
-Both projects use **uv** for Python dependency management. The container images are built with Python 3.13, except for the initial `python:latest` baseline.
+Both projects use **uv** for Python dependency management. The container images are built with Python 3.13.
 
 ```mermaid
 flowchart LR
