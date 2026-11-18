@@ -206,7 +206,7 @@ def health():
 
 
 def main():
-    logger.info("Starting Leaf & Lore Bookstore UI")
+    logger.info("Starting AB BookHub UI")
     app.run(host=app.config["HOST"], port=app.config["PORT"], debug=app.config["DEBUG"])
 
 

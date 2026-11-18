@@ -1,4 +1,4 @@
-# Leaf & Lore — Docker Image Optimization
+# AB BookHub — Docker Image Optimization
 
 A Python bookstore application used to explore how Docker base images, multi-stage builds, and dependency management affect container image size.
 
@@ -6,7 +6,7 @@ The main focus is the **backend image optimization process**: seven Dockerfiles,
 
 ## Application overview
 
-Leaf & Lore has two Python services:
+AB BookHub has two Python services:
 
 - **Backend:** FastAPI service for managing books, backed by CSV storage.
 - **Frontend:** Flask web interface that communicates with the backend over HTTP.

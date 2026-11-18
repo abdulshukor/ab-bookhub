@@ -1,4 +1,4 @@
-"""Leaf & Lore bookstore API (FastAPI)."""
+"""AB BookHub API (FastAPI)."""
 
 from .main import app
 from .models import Book, BookCreate, BookUpdate, InventoryStats
