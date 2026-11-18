@@ -35,7 +35,7 @@ app.add_middleware(
 
 @app.get("/")
 def root() -> dict[str, str]:
-    return {"message": "Leaf & Lore Bookstore API", "docs": "/docs"}
+    return {"message": "AB BookHub API", "docs": "/docs"}
 
 
 @app.get("/health")

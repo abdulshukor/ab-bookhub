@@ -1,9 +1,9 @@
-"""Environment-based configuration for the bookstore API."""
+"""Environment-based configuration for the AB BookHub API."""
 
 import os
 from pathlib import Path
 
-APP_NAME = os.getenv("APP_NAME", "Leaf & Lore Bookstore API")
+APP_NAME = os.getenv("APP_NAME", "AB BookHub API")
 API_HOST = os.getenv("API_HOST", "0.0.0.0")
 API_PORT = int(os.getenv("API_PORT", "21002"))
 DATA_DIR = Path(
