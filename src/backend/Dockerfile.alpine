@@ -8,4 +8,4 @@ COPY . /app
 
 RUN uv sync --locked --no-editable
 
-CMD ["uv", "run", "book-store-backend-api"]
+CMD ["uv", "run", "ab-bookhub-backend-api"]

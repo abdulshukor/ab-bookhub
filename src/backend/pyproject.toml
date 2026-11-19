@@ -1,5 +1,5 @@
 [project]
-name = "book-store-backend"
+name = "ab-bookhub-backend"
 version = "0.0.0"
 description = "Backend API for book-store"
 readme = "README.md"
@@ -8,7 +8,7 @@ requires-python = ">=3.13"
 dependencies = ["fastapi>=0.162.3", "uvicorn>=0.54.0"]
 
 [project.scripts]
-book-store-backend-api = "backend.main:main"
+ab-bookhub-backend-api = "backend.main:main"
 
 [build-system]
 requires = ["uv_build>=0.13.7,<0.14.0"]

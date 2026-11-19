@@ -29,4 +29,4 @@ COPY --from=builder /app/.venv /app/.venv
 USER app-user
 
 EXPOSE 21002
-CMD ["/app/.venv/bin/book-store-backend-api"]
+CMD ["/app/.venv/bin/ab-bookhub-backend-api"]

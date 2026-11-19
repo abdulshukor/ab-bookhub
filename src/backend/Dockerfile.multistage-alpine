@@ -23,4 +23,4 @@ WORKDIR /app
 # Leave uv and the builder's other files out of the runtime image
 COPY --from=builder /app/.venv /app/.venv
 
-CMD ["/app/.venv/bin/book-store-backend-api"]
+CMD ["/app/.venv/bin/ab-bookhub-backend-api"]

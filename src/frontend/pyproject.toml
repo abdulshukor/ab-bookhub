@@ -1,17 +1,14 @@
 [project]
-name = "book-store-frontend"
+name = "ab-bookhub-frontend"
 version = "0.0.0"
 description = "frontend book store app"
 readme = "README.md"
 authors = [{ name = "Abdul Shukor", email = "abdul@gmail.com" }]
 requires-python = ">=3.13"
-dependencies = [
-    "flask>=3.1.3",
-    "requests>=2.34.2",
-]
+dependencies = ["flask>=3.1.3", "requests>=2.34.2"]
 
 [project.scripts]
-book-store-frontend = "frontend.main:main"
+ab-bookhub-frontend = "frontend.main:main"
 
 [build-system]
 requires = ["uv_build>=0.13.7,<0.14.0"]

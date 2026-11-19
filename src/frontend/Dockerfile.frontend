@@ -34,6 +34,6 @@ USER app-user
 
 EXPOSE 21001
 
-CMD ["/app/.venv/bin/book-store-frontend"]
+CMD ["/app/.venv/bin/ab-bookhub-frontend"]
 
 
