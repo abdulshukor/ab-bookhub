@@ -1,3 +1,5 @@
 id,created_at,updated_at,title,author,genre,isbn,price,quantity,description
-0ae78c85-33d6-45cb-83b6-6955b8a9a734,2026-11-15T20:51:37.704048Z,2026-11-15T20:51:37.704048Z,qwe,asdf,Non-fiction,,2312,443,
-1c110e0c-3308-495a-a415-49dde202a957,2026-11-15T21:00:31.111758Z,2026-11-15T21:00:31.111758Z,iukjhkjhk,asdf,Biography,,3,33,
+0ae78c85-33d6-45cb-83b6-6955b8a9a734,2026-11-15T20:51:37.704048Z,2026-11-18T16:27:43.110234Z,Finance,Cal Newport,Productivity,3,19.99,100,
+1c110e0c-3308-495a-a415-49dde202a957,2026-11-15T21:00:31.111758Z,2026-11-18T16:26:54.840454Z,The Psychology of Money,Morgan Housel,Finance,2,21.99,25,
+5d7c211c-a7f9-47cd-a9fa-70c5fa34aa43,2026-11-18T16:15:46.750086Z,2026-11-18T16:26:04.460176Z,Atomic Habits,James Clear,Self-Help,1,24.99,50,Habits
+02fceac5-cb7c-40c8-bdac-4c08976fca07,2026-11-18T21:35:46.154110Z,2026-11-18T21:35:46.154110Z,The Alchemist,Paulo Coelho,Fiction,4,11.99,4,

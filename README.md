@@ -36,7 +36,7 @@ flowchart LR
 - Git
 - Python 3.13
 - uv
-- Docker & Docker Compose
+- Docker
 - Trivy
 
 ## Backend image optimization
